@@ -3,147 +3,350 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0f1a">
+<meta name="theme-color" content="#0a2427">
 <meta name="description" content="Animated ads for apps and SaaS by Gabriel Ambrocio: motion graphics, sound design and voice-over in English and Spanish.">
-<title>Animated ads for apps & SaaS | Gabriel Ambrocio</title>
+<title>Animated ads for apps &amp; SaaS | Gabriel Ambrocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0f1a;--panel:#131a2a;--ink:#eef2f8;--muted:#9aa7bb;--line:#232c40;--accent:#ff3d64;--blue:#4c8dff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
-a{color:var(--ink)}
-.wrap{width:min(100% - 32px,1080px);margin-inline:auto}
-.top{border-bottom:1px solid var(--line);padding:16px 0}
-.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.brand{font-weight:750;font-size:14px;letter-spacing:.02em}
-.top nav{display:flex;gap:18px;font-size:13px}.top nav a{color:var(--muted);text-decoration:none}.top nav a:hover{color:var(--ink)}
-.hero{padding:72px 0 48px;max-width:820px}
-.eyebrow{color:var(--accent);font-size:12px;font-weight:750;letter-spacing:.14em;text-transform:uppercase}
-h1{font-size:clamp(38px,6.5vw,66px);line-height:1.04;letter-spacing:-.045em;margin:14px 0 18px}
-.lede{font-size:clamp(17px,2.2vw,21px);color:var(--muted);margin:0 0 28px}
-.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px}
-.btn.ghost{background:none;border:1px solid var(--line);color:var(--ink);margin-left:8px}
-h2{font-size:clamp(26px,3.6vw,36px);letter-spacing:-.03em;margin:0 0 8px}
-section{padding:40px 0}
-.sub{color:var(--muted);margin:0 0 28px}
-.work{display:grid;gap:22px;margin-bottom:22px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px}
-.work.h{grid-template-columns:1fr}
-.work.v{grid-template-columns:minmax(0,320px) 1fr;align-items:center}
-@media (max-width:720px){.work.v{grid-template-columns:1fr}.work.v video{max-width:320px;margin-inline:auto}}
-video{width:100%;display:block;border-radius:14px;background:#000}
-.meta h3{font-size:22px;margin:0 0 6px;letter-spacing:-.02em}
-.meta p{color:var(--muted);margin:0 0 12px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;padding:0;list-style:none}
-.tags li{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--muted)}
-.langs{display:flex;gap:8px;flex-wrap:wrap}
-.langs button{font:inherit;font-size:13px;font-weight:650;background:none;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
-.langs button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.duo{display:grid;grid-template-columns:1fr minmax(0,240px);gap:18px;align-items:start}
-@media (max-width:720px){.duo{grid-template-columns:1fr}.duo .vert{max-width:240px}}
-.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
-.card b{display:block;margin-bottom:6px}.card span{color:var(--muted);font-size:15px}
-.num{color:var(--accent);font-weight:800;font-size:13px;letter-spacing:.1em}
-.note{color:var(--muted);font-size:13px;margin-top:6px}
-footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:14px;margin-top:24px}
+:root{--paper:#f3f5f2;--card:#fff;--ink:#0c1f22;--ink2:#3c5357;--line:#d5ddda;--teal:#0e6f68;--deep:#0a2427;--deep2:#0f3034;--dline:#21474b;--mint:#7fe0cf;--dmuted:#a9c2c0;--ease:cubic-bezier(.2,.7,.1,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.6 Geist,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+a{color:var(--teal);text-underline-offset:3px}a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid #f2b544;outline-offset:3px;border-radius:6px}
+.wrap{width:min(100% - 32px,1160px);margin-inline:auto}
+h1,h2,h3{text-wrap:balance;margin:0;font-weight:600}p{text-wrap:pretty}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* dark sections with animated background */
+.dark{position:relative;background:var(--deep);color:#fff;overflow:hidden;isolation:isolate}
+.dark canvas.bg{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block}
+
+.top{position:relative;z-index:2}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;height:76px}
+.brand{font-weight:600;font-size:16px;color:#fff;text-decoration:none}
+.top nav{display:flex;gap:4px;align-items:center}
+.top nav a{color:var(--dmuted);text-decoration:none;font-size:15px;padding:8px 12px;border-radius:8px}
+.top nav a:hover{color:#fff}
+.top nav a.cta{color:var(--deep);background:var(--mint);font-weight:600}
+.top nav a.cta:hover{background:#fff}
+@media(max-width:640px){.top nav a.opt{display:none}}
+
+.hero{padding:40px 0 112px}
+.hgrid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:64px;align-items:center}
+h1{font-size:clamp(44px,7vw,92px);line-height:.98;letter-spacing:-.05em;margin:0 0 28px}
+h1 .l{display:block;overflow:hidden;padding-bottom:.07em;margin-bottom:-.07em}
+h1 .l>span{display:inline-block;animation:rise 1.1s var(--ease) both}
+h1 .l:nth-child(2)>span{animation-delay:.1s}h1 .l:nth-child(3)>span{animation-delay:.2s}
+h1 em{font-style:normal;color:var(--mint)}
+.lede{font-size:clamp(18px,1.8vw,21px);color:var(--dmuted);max-width:540px;margin:0 0 36px;animation:fade 1s .4s var(--ease) both}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;animation:fade 1s .55s var(--ease) both}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:0 26px;border-radius:12px;font-weight:600;font-size:17px;text-decoration:none;transition:transform .25s var(--ease),background .25s,border-color .25s,color .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn.pri{background:var(--mint);color:var(--deep)}.btn.pri:hover{background:#fff;color:var(--deep)}
+.btn.sec{border:1px solid var(--dline);color:#fff;background:rgba(10,36,39,.5)}.btn.sec:hover{border-color:var(--mint);color:#fff}
+.btn.ink{background:var(--deep);color:#fff}.btn.ink:hover{background:var(--teal);color:#fff}
+.btn .arr{transition:transform .25s var(--ease)}.btn:hover .arr{transform:translateX(4px)}
+
+.phone{position:relative;height:min(70vh,580px);aspect-ratio:9/16;border-radius:30px;padding:8px;background:#061719;border:1px solid var(--dline);box-shadow:0 50px 100px -30px rgba(0,0,0,.7);animation:float-in 1.2s .15s var(--ease) both}
+.phone video{width:100%;height:100%;object-fit:cover;border-radius:23px;display:block;background:var(--deep2)}
+.hpause{position:absolute;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(6,23,25,.75);color:#fff;cursor:pointer;display:grid;place-items:center}
+.hpause svg{width:16px;height:16px;fill:currentColor}
+@media(max-width:860px){.hgrid{grid-template-columns:1fr;gap:48px}.phone{height:auto;width:min(64vw,260px);margin-inline:auto}.hero{padding:24px 0 80px}}
+
+/* sections */
+section{padding:120px 0}
+@media(max-width:760px){section{padding:80px 0}}
+h2{font-size:clamp(36px,5vw,64px);line-height:1.02;letter-spacing:-.04em;margin-bottom:56px}
+
+/* work */
+.work{display:grid;gap:36px;padding:0 0 96px}
+.work:last-of-type{padding-bottom:0}
+.media{display:grid;gap:16px;align-items:start}
+.m-duo{grid-template-columns:minmax(0,1fr) clamp(170px,21vw,270px)}
+.wv{grid-template-columns:minmax(0,1fr) clamp(240px,26vw,320px);align-items:center;gap:64px}
+.wv .media{order:2}
+@media(max-width:760px){.m-duo{grid-template-columns:1fr}.m-duo .player.v{width:min(100%,260px);justify-self:center}.wv{grid-template-columns:1fr;gap:28px}.wv .media{order:0;width:min(100%,300px);justify-self:center}.work{padding-bottom:72px}}
+.player{position:relative;border-radius:16px;overflow:hidden;background:var(--deep);aspect-ratio:16/9;box-shadow:0 30px 60px -36px rgba(12,31,34,.5)}
+.player.v{aspect-ratio:9/16;max-height:80vh}
+.player video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:var(--deep)}
+.play{position:absolute;inset:0;width:100%;border:0;padding:20px;background:transparent;cursor:pointer;display:grid;place-items:end start;transition:opacity .3s}
+.v .play{padding:14px}
+@media(max-width:760px){.play{padding:12px}.play .pb,.v .play .pb{width:48px;height:48px}.play .pb svg,.v .play .pb svg{width:16px;height:16px;margin-left:3px}}
+.play .pb{width:76px;height:76px;border-radius:50%;background:var(--mint);color:var(--deep);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(0,0,0,.5);transition:transform .35s var(--ease)}
+.play .pb svg{width:24px;height:24px;margin-left:4px;fill:currentColor}
+.play:hover .pb{transform:scale(1.1)}
+.v .play .pb{width:60px;height:60px}.v .play .pb svg{width:20px;height:20px}
+.player.started .play{opacity:0;pointer-events:none}
+.meta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:12px 56px;align-items:start}
+.wv .meta{grid-template-columns:1fr}
+@media(max-width:760px){.meta{grid-template-columns:1fr}}
+.meta h3{font-size:clamp(30px,3.4vw,44px);letter-spacing:-.035em;line-height:1.05}
+.meta p{color:var(--ink2);margin:0 0 14px}
+.meta p strong{color:var(--ink);font-weight:600}
+.specs{color:var(--ink2);font-size:16px;margin:0 0 20px}
+.langs{display:inline-flex;padding:4px;gap:4px;border-radius:12px;background:#e3e9e6}
+.langs button{font:inherit;font-size:15px;font-weight:600;min-height:42px;padding:0 18px;border:0;border-radius:9px;background:none;color:var(--ink2);cursor:pointer;transition:background .25s,color .25s}
+.langs button[aria-pressed=true]{background:var(--deep);color:#fff}
+.note{font-size:14px;color:var(--ink2);margin:56px 0 0}
+
+/* process */
+.proc{background:var(--card);border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px}
+.step b{display:block;font-size:26px;font-weight:600;letter-spacing:-.025em;margin-bottom:10px;padding-top:24px;border-top:2px solid var(--ink)}
+.step span{color:var(--ink2)}
+@media(max-width:760px){.steps{grid-template-columns:1fr;gap:36px}}
+.deliv{margin:56px 0 0;font-size:clamp(20px,2.2vw,26px);letter-spacing:-.015em;max-width:760px}
+
+/* pricing */
+.prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.price{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:36px;display:flex;flex-direction:column;gap:4px;transition:transform .35s var(--ease),border-color .35s}
+.price:hover{transform:translateY(-4px);border-color:var(--teal)}
+.price h3{font-size:24px;letter-spacing:-.02em}
+.price .amt{font-size:clamp(48px,6vw,72px);font-weight:600;letter-spacing:-.05em;line-height:1.1;margin:20px 0 24px}
+.price .amt small{font-size:20px;font-weight:500;color:var(--ink2);letter-spacing:0;margin-right:6px}
+.price .btn{align-self:flex-start}
+.minor{margin-top:24px;color:var(--ink2)}
+@media(max-width:760px){.prices{grid-template-columns:1fr}.price{padding:28px}}
+
+/* contact */
+.contact{padding:140px 0 120px}
+.contact h2{font-size:clamp(48px,8vw,112px);margin-bottom:24px}
+.contact p{color:var(--dmuted);font-size:clamp(18px,1.8vw,21px);max-width:560px;margin:0 0 44px}
+.mail{display:inline-block;font-size:clamp(20px,3.4vw,40px);font-weight:600;letter-spacing:-.03em;color:#fff;text-decoration:none;border-bottom:2px solid var(--mint);padding-bottom:4px;overflow-wrap:anywhere;transition:color .25s}
+.mail:hover{color:var(--mint)}
+.contact .ctas{margin-top:40px;animation:none}
+footer{background:var(--deep);color:var(--dmuted);border-top:1px solid var(--dline);padding:28px 0 40px;font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer a{color:var(--mint)}footer a:hover{color:#fff}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(32px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.js .work .player{clip-path:inset(8% 5% round 16px);transition:clip-path 1.3s var(--ease)}
+.js .work .player video{transform:scale(1.12);transition:transform 1.6s var(--ease)}
+.js .work.in .player{clip-path:inset(0 round 16px)}
+.js .work.in .player video{transform:none}
+
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes float-in{from{opacity:0;transform:translateY(40px) rotate(3deg)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .js .rv{opacity:1;transform:none}
+  .js .work .player{clip-path:none}.js .work .player video{transform:none}
+}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <div class="brand">Gabriel Ambrocio · Motion</div>
-  <nav><a href="#work">Work</a><a href="#how">How it works</a><a href="#contact">Contact</a><a href="../">Dev portfolio</a></nav>
-</div></header>
+<div class="dark">
+  <canvas class="bg" aria-hidden="true"></canvas>
+  <header class="top"><div class="wrap">
+    <a class="brand" href="#top">Gabriel Ambrocio</a>
+    <nav aria-label="Main"><a class="opt" href="#work">Work</a><a class="opt" href="#pricing">Pricing</a><a class="cta" href="#contact">Start a project</a></nav>
+  </div></header>
 
-<main class="wrap">
-  <div class="hero">
-    <div class="eyebrow">Animated ads · English & Spanish</div>
-    <h1>Animated ads that explain your app in seconds.</h1>
-    <p class="lede">Motion graphics for apps and SaaS: your screens, numbers and benefits brought to life, cut to the beat, with sound design and voice-over in English and Spanish. Every video in horizontal and vertical.</p>
-    <a class="btn" href="#contact">Start a project</a><a class="btn ghost" href="#work">See the work</a>
-  </div>
-
-  <section id="work">
-    <h2>Work</h2>
-    <p class="sub">Sample brands made to show the range: a corporate B2B ad, a short punch, a full promo with voice and an illustrated story.</p>
-
-    <article class="work h">
-      <div class="duo">
-        <video src="v/plumbline.mp4" poster="v/plumbline.jpg" controls playsinline preload="none"></video>
-        <video class="vert" src="v/plumbline-vertical.mp4" poster="v/plumbline-vertical.jpg" controls playsinline preload="none"></video>
+  <div class="hero" id="top">
+    <div class="wrap hgrid">
+      <div>
+        <h1 aria-label="Animated ads that explain your app in seconds."><span class="l" aria-hidden="true"><span>Animated ads</span></span><span class="l" aria-hidden="true"><span>that explain your app</span></span><span class="l" aria-hidden="true"><span>in <em>seconds.</em></span></span></h1>
+        <p class="lede">Motion graphics for apps and SaaS: your screens, numbers and benefits brought to life, cut to the beat, with sound design and voice-over in English and Spanish. Every video in horizontal and vertical.</p>
+        <div class="ctas"><a class="btn pri" href="#contact">Start a project <span class="arr" aria-hidden="true">→</span></a><a class="btn sec" href="#work">See the work</a></div>
       </div>
-      <div class="meta">
-        <h3>Plumbline · B2B sales forecasting</h3>
-        <p>A 30-second corporate ad with voice-over: the spreadsheet chaos, a dashboard that looks like a real product, the results and the call to action. Built in 16:9 and recomposed for 9:16.</p>
-        <ul class="tags"><li>16:9 + 9:16</li><li>30 s</li><li>Corporate / B2B</li><li>Voice-over</li></ul>
+      <div class="phone">
+        <video id="hero-video" src="v/latido-en.mp4" poster="v/latido-en.jpg" muted loop playsinline preload="metadata" aria-label="Looping preview of the Latido health app ad, muted"></video>
+        <button class="hpause" id="hero-toggle" type="button" aria-label="Pause preview"><svg viewBox="0 0 16 16" aria-hidden="true"><path id="hero-icon" d="M3 2h3.5v12H3zM9.5 2H13v12H9.5z"/></svg></button>
       </div>
-    </article>
-
-    <article class="work v">
-      <video id="v-latido" src="v/latido-en.mp4" poster="v/latido-en.jpg" controls playsinline preload="none"></video>
-      <div class="meta">
-        <h3>Latido · health app</h3>
-        <p>A 13-second vertical ad built entirely on the music: a heartbeat that becomes the app, every number drawn, counted or written in, no static frame.</p>
-        <ul class="tags"><li>9:16</li><li>13 s</li><li>Music-driven</li><li>Sound design</li></ul>
-        <div class="langs" data-video="v-latido"><button aria-pressed="true" data-src="latido-en">English</button><button aria-pressed="false" data-src="latido-es">Español</button></div>
-      </div>
-    </article>
-
-    <article class="work h">
-      <div class="duo">
-        <video id="v-hilo" src="v/hilo-en.mp4" poster="v/hilo-en.jpg" controls playsinline preload="none"></video>
-        <video class="vert" src="v/hilo-vertical-en.mp4" poster="v/hilo-vertical-en.jpg" controls playsinline preload="none"></video>
-      </div>
-      <div class="meta">
-        <h3>Hilo · unified inbox</h3>
-        <p>A 59-second promo with voice-over: the problem, the product and the call to action, plus a 23-second vertical cut for Reels, TikTok and Shorts.</p>
-        <ul class="tags"><li>16:9 + 9:16</li><li>59 s</li><li>Voice-over</li><li>Bilingual</li></ul>
-        <div class="langs" data-video="v-hilo"><button aria-pressed="true" data-src="hilo-en">English</button><button aria-pressed="false" data-src="hilo-es">Español</button></div>
-      </div>
-    </article>
-
-    <article class="work h">
-      <video src="v/nimbo-es.mp4" poster="v/nimbo-es.jpg" controls playsinline preload="none"></video>
-      <div class="meta">
-        <h3>Nimbo · invoicing for freelancers</h3>
-        <p>A 31-second illustrated ad with a character, a calendar, a phone and a chart. No voice: the story is told with motion, text and sound.</p>
-        <ul class="tags"><li>16:9</li><li>31 s</li><li>Illustration</li><li>Spanish</li></ul>
-      </div>
-    </article>
-    <p class="note">Brands and figures in these samples are fictional.</p>
-  </section>
-
-  <section id="how">
-    <h2>What you get</h2>
-    <p class="sub">One clear process, no templates.</p>
-    <div class="grid3">
-      <div class="card"><div class="num">01</div><b>Script first</b><span>From your brief or landing page. You approve it before any animation starts.</span></div>
-      <div class="card"><div class="num">02</div><b>Animation + sound</b><span>Your real screens recreated in motion, licensed music and a sound effect on every key moment.</span></div>
-      <div class="card"><div class="num">03</div><b>Every format</b><span>16:9 for web and YouTube, 9:16 for Reels, TikTok and Shorts. English, Spanish or both.</span></div>
     </div>
-    <p class="note">Typical delivery: 4–7 days with 2 rounds of changes. I'm also a software developer, so I get your product fast.</p>
+  </div>
+</div>
+
+<main>
+  <section id="work">
+    <div class="wrap">
+      <h2 class="rv">The work.</h2>
+
+      <article class="work rv">
+        <div class="media m-duo">
+          <div class="player"><video src="v/plumbline.mp4" poster="v/plumbline.jpg" controls playsinline preload="none" aria-label="Plumbline ad, 16:9"></video><button class="play" type="button" aria-label="Play Plumbline ad, 16:9"><span class="pb"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13L14 8z"/></svg></span></button></div>
+          <div class="player v"><video src="v/plumbline-vertical.mp4" poster="v/plumbline-vertical.jpg" controls playsinline preload="none" aria-label="Plumbline ad, vertical 9:16"></video><button class="play" type="button" aria-label="Play Plumbline ad, vertical 9:16"><span class="pb"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13L14 8z"/></svg></span></button></div>
+        </div>
+        <div class="meta">
+          <h3>Plumbline</h3>
+          <div>
+            <p><strong>B2B sales forecasting.</strong> A 30-second corporate ad with voice-over: the spreadsheet chaos, a dashboard that looks like a real product, the results and the call to action. Built in 16:9 and recomposed for 9:16.</p>
+            <p class="specs">16:9 + 9:16 · 30 s · Corporate / B2B · Voice-over</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="work wv rv">
+        <div class="media">
+          <div class="player v"><video id="v-latido" src="v/latido-en.mp4" poster="v/latido-en.jpg" controls playsinline preload="none" aria-label="Latido ad, vertical 9:16"></video><button class="play" type="button" aria-label="Play Latido ad"><span class="pb"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13L14 8z"/></svg></span></button></div>
+        </div>
+        <div class="meta">
+          <h3>Latido</h3>
+          <div>
+            <p><strong>Health app.</strong> A 13-second vertical ad built entirely on the music: a heartbeat that becomes the app, every number drawn, counted or written in, no static frame.</p>
+            <p class="specs">9:16 · 13 s · Music-driven · Sound design</p>
+            <div class="langs" role="group" aria-label="Latido video language" data-video="v-latido"><button type="button" aria-pressed="true" data-src="latido-en">English</button><button type="button" aria-pressed="false" data-src="latido-es" lang="es">Español</button></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work rv">
+        <div class="media m-duo">
+          <div class="player"><video id="v-hilo" src="v/hilo-en.mp4" poster="v/hilo-en.jpg" controls playsinline preload="none" aria-label="Hilo promo, 16:9"></video><button class="play" type="button" aria-label="Play Hilo promo, 16:9"><span class="pb"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13L14 8z"/></svg></span></button></div>
+          <div class="player v"><video src="v/hilo-vertical-en.mp4" poster="v/hilo-vertical-en.jpg" controls playsinline preload="none" aria-label="Hilo vertical cut, 9:16"></video><button class="play" type="button" aria-label="Play Hilo vertical cut"><span class="pb"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13L14 8z"/></svg></span></button></div>
+        </div>
+        <div class="meta">
+          <h3>Hilo</h3>
+          <div>
+            <p><strong>Unified inbox.</strong> A 59-second promo with voice-over: the problem, the product and the call to action, plus a 23-second vertical cut for Reels, TikTok and Shorts.</p>
+            <p class="specs">16:9 + 9:16 · 59 s · Voice-over · Bilingual</p>
+            <div class="langs" role="group" aria-label="Hilo video language" data-video="v-hilo"><button type="button" aria-pressed="true" data-src="hilo-en">English</button><button type="button" aria-pressed="false" data-src="hilo-es" lang="es">Español</button></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work rv">
+        <div class="media">
+          <div class="player"><video src="v/nimbo-es.mp4" poster="v/nimbo-es.jpg" controls playsinline preload="none" aria-label="Nimbo ad, 16:9, in Spanish"></video><button class="play" type="button" aria-label="Play Nimbo ad, in Spanish"><span class="pb"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13L14 8z"/></svg></span></button></div>
+        </div>
+        <div class="meta">
+          <h3>Nimbo</h3>
+          <div>
+            <p><strong>Invoicing for freelancers.</strong> A 31-second illustrated ad with a character, a calendar, a phone and a chart. No voice: the story is told with motion, text and sound.</p>
+            <p class="specs">16:9 · 31 s · Illustration · Spanish</p>
+          </div>
+        </div>
+      </article>
+      <p class="note">Brands and figures in these samples are fictional.</p>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2>Let's make yours</h2>
-    <p class="sub">Send your app link and what you want people to remember. I'll reply within a day with a script idea.</p>
-    <a class="btn" href="mailto:ambrociocastanazag@gmail.com?subject=Animated%20ad%20for%20my%20app">ambrociocastanazag@gmail.com</a>
+  <section id="how" class="proc">
+    <div class="wrap">
+      <h2 class="rv">What you get.</h2>
+      <div class="steps">
+        <div class="step rv"><b>Script first</b><span>From your brief or landing page. You approve it before any animation starts.</span></div>
+        <div class="step rv"><b>Animation + sound</b><span>Your real screens recreated in motion, licensed music and a sound effect on every key moment.</span></div>
+        <div class="step rv"><b>Every format</b><span>16:9 for web and YouTube, 9:16 for Reels, TikTok and Shorts. English, Spanish or both.</span></div>
+      </div>
+      <p class="deliv rv">Typical delivery is 4–7 days with 2 rounds of changes. I'm also a software developer, so I get your product fast.</p>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <h2 class="rv">Clear prices.</h2>
+      <div class="prices">
+        <div class="price rv"><h3>Animated product ad · 30 s</h3><div class="amt"><small>US$</small>450</div><a class="btn ink" href="#contact">Start a project</a></div>
+        <div class="price rv"><h3>Bilingual product promo · 60 s</h3><div class="amt"><small>US$</small>750</div><a class="btn ink" href="#contact">Start a project</a></div>
+      </div>
+      <p class="minor rv">Smaller budget? See my packages <a href="https://www.fiverr.com/s/2pQZaK8" target="_blank" rel="noopener">on Fiverr<span class="sr"> (opens in a new tab)</span></a>.</p>
+    </div>
   </section>
 </main>
 
-<footer><div class="wrap">Gabriel Ambrocio · Guatemala, working in US hours · <a href="../">Software portfolio</a></div></footer>
+<div class="dark" id="contact">
+  <canvas class="bg" aria-hidden="true"></canvas>
+  <section class="contact">
+    <div class="wrap">
+      <h2 class="rv">Let's make yours.</h2>
+      <p class="rv">Send your app link and what you want people to remember. I'll reply within a day with a script idea.</p>
+      <div class="rv"><a class="mail" href="mailto:ambrociocastanazag@gmail.com?subject=Animated%20ad%20for%20my%20app">ambrociocastanazag@gmail.com</a></div>
+      <div class="ctas rv"><a class="btn pri" href="https://www.fiverr.com/s/2pQZaK8" target="_blank" rel="noopener">Hire me on Fiverr <span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a><a class="btn sec" href="https://contra.com/gabriel_ambrocio_nw6zhw86" target="_blank" rel="noopener">Hire me on Contra <span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></div>
+    </div>
+  </section>
+  <footer><div class="wrap"><span>Gabriel Ambrocio · Guatemala, working in US hours</span><a href="../">Software portfolio</a></div></footer>
+</div>
 
 <script>
-document.querySelectorAll('.langs').forEach(function (g) {
-  var v = document.getElementById(g.dataset.video);
-  g.querySelectorAll('button').forEach(function (b) {
-    b.addEventListener('click', function () {
-      g.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
-      var playing = !v.paused;
-      v.src = 'v/' + b.dataset.src + '.mp4';
-      v.poster = 'v/' + b.dataset.src + '.jpg';
-      if (playing) v.play();
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('js');
+
+  // Animated background: flowing lines that bend away from the cursor
+  document.querySelectorAll('canvas.bg').forEach(function (cv) {
+    var ctx = cv.getContext('2d'), host = cv.parentNode, w, h, dpr, t = Math.random() * 100, on = true, mx = -9999, my = -9999, tmx = -9999, tmy = -9999;
+    function size() { dpr = Math.min(devicePixelRatio || 1, 2); w = host.clientWidth; h = host.clientHeight; cv.width = w * dpr; cv.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); draw(); }
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      var n = Math.max(14, Math.round(h / 34)), step = Math.max(10, w / 90);
+      for (var i = 0; i < n; i++) {
+        var base = (i + .5) / n * h, k = i / n;
+        ctx.beginPath();
+        for (var x = -step; x <= w + step; x += step) {
+          var y = base
+            + Math.sin(x * .0042 + t * .55 + i * .38) * 26
+            + Math.sin(x * .0011 - t * .32 + k * 5) * 46;
+          var dx = x - mx, dy = y - my, d2 = dx * dx + dy * dy;
+          y += dy / Math.sqrt(d2 + 1) * 70 * Math.exp(-d2 / 22000);
+          x === -step ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        var a = .07 + .16 * Math.pow(Math.sin(k * Math.PI), 2);
+        ctx.strokeStyle = 'rgba(127,224,207,' + a.toFixed(3) + ')';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+    function loop() { if (on) { t += .006; mx += (tmx - mx) * .08; my += (tmy - my) * .08; draw(); } requestAnimationFrame(loop); }
+    addEventListener('resize', size); size();
+    if (reduce) return;
+    host.addEventListener('pointermove', function (e) { var r = cv.getBoundingClientRect(); tmx = e.clientX - r.left; tmy = e.clientY - r.top; if (mx < -999) { mx = tmx; my = tmy; } });
+    host.addEventListener('pointerleave', function () { tmx = tmy = -9999; mx = my = -9999; });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { on = e[0].isIntersecting; }).observe(host);
+    requestAnimationFrame(loop);
+  });
+
+  // Hero loop
+  var hv = document.getElementById('hero-video'), ht = document.getElementById('hero-toggle'), hi = document.getElementById('hero-icon');
+  var userPaused = reduce, visible = true;
+  function setIcon() { var p = hv.paused; hi.setAttribute('d', p ? 'M3 1.5v13L14 8z' : 'M3 2h3.5v12H3zM9.5 2H13v12H9.5z'); ht.setAttribute('aria-label', p ? 'Play preview' : 'Pause preview'); }
+  function sync() { if (!userPaused && visible) { var r = hv.play(); if (r) r.catch(function () {}); } else hv.pause(); }
+  hv.addEventListener('play', setIcon); hv.addEventListener('pause', setIcon);
+  ht.addEventListener('click', function () { userPaused = !hv.paused; sync(); setIcon(); });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; sync(); }).observe(hv);
+  sync(); setIcon();
+
+  // Sample players
+  document.querySelectorAll('.player').forEach(function (p) {
+    var v = p.querySelector('video'), b = p.querySelector('.play');
+    b.addEventListener('click', function () { var r = v.play(); if (r) r.catch(function () {}); v.focus(); });
+    v.addEventListener('play', function () { p.classList.add('started'); });
+  });
+  document.addEventListener('play', function (e) {
+    if (!e.target.hasAttribute('controls')) return;
+    document.querySelectorAll('video[controls]').forEach(function (v) { if (v !== e.target) v.pause(); });
+  }, true);
+
+  // Language switch
+  document.querySelectorAll('.langs').forEach(function (g) {
+    var v = document.getElementById(g.dataset.video);
+    g.querySelectorAll('button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        g.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+        var playing = !v.paused;
+        v.src = 'v/' + b.dataset.src + '.mp4';
+        v.poster = 'v/' + b.dataset.src + '.jpg';
+        if (playing) v.play();
+      });
     });
   });
-});
+
+  // Scroll reveals
+  var rv = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) { rv.forEach(function (el) { el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+  rv.forEach(function (el) { io.observe(el); });
+})();
 </script>
 </body>
 </html>
