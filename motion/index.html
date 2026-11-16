@@ -213,14 +213,14 @@ footer a{color:var(--mint)}footer a:hover{color:#fff}
       <article class="work rv">
         <div class="media m-duo">
           <div class="player"><video id="v-hilo" src="v/hilo-en.mp4" poster="v/hilo-en.jpg" controls playsinline preload="none" aria-label="Hilo promo, 16:9"></video><button class="play" type="button" aria-label="Play Hilo promo, 16:9"><span class="pb"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13L14 8z"/></svg></span></button></div>
-          <div class="player v"><video src="v/hilo-vertical-en.mp4" poster="v/hilo-vertical-en.jpg" controls playsinline preload="none" aria-label="Hilo vertical cut, 9:16"></video><button class="play" type="button" aria-label="Play Hilo vertical cut"><span class="pb"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13L14 8z"/></svg></span></button></div>
+          <div class="player v"><video id="v-hilo-v" src="v/hilo-vertical-en.mp4" poster="v/hilo-vertical-en.jpg" controls playsinline preload="none" aria-label="Hilo vertical cut, 9:16"></video><button class="play" type="button" aria-label="Play Hilo vertical cut"><span class="pb"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13L14 8z"/></svg></span></button></div>
         </div>
         <div class="meta">
           <h3>Hilo</h3>
           <div>
             <p><strong>Unified inbox.</strong> A 58-second promo with voice-over: a wall of messages lines up into one shared inbox, the urgent one steps forward, and the reply goes out. Plus a 23-second vertical cut for Reels, TikTok and Shorts.</p>
             <p class="specs">16:9 + 9:16 · 58 s · Voice-over · Bilingual</p>
-            <div class="langs" role="group" aria-label="Hilo video language" data-video="v-hilo"><button type="button" aria-pressed="true" data-src="hilo-en">English</button><button type="button" aria-pressed="false" data-src="hilo-es" lang="es">Español</button></div>
+            <div class="langs" role="group" aria-label="Hilo video language" data-video="v-hilo" data-video2="v-hilo-v"><button type="button" aria-pressed="true" data-src="hilo-en" data-src2="hilo-vertical-en">English</button><button type="button" aria-pressed="false" data-src="hilo-es" data-src2="hilo-vertical-es" lang="es">Español</button></div>
           </div>
         </div>
       </article>
@@ -340,14 +340,19 @@ footer a{color:var(--mint)}footer a:hover{color:#fff}
 
   // Language switch
   document.querySelectorAll('.langs').forEach(function (g) {
-    var v = document.getElementById(g.dataset.video);
+    var pairs = [[document.getElementById(g.dataset.video), 'src']];
+    if (g.dataset.video2) pairs.push([document.getElementById(g.dataset.video2), 'src2']);
     g.querySelectorAll('button').forEach(function (b) {
       b.addEventListener('click', function () {
         g.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
-        var playing = !v.paused;
-        v.src = 'v/' + b.dataset.src + '.mp4';
-        v.poster = 'v/' + b.dataset.src + '.jpg';
-        if (playing) v.play();
+        pairs.forEach(function (p) {
+          var v = p[0], name = b.dataset[p[1]];
+          if (!v || !name) return;
+          var playing = !v.paused;
+          v.src = 'v/' + name + '.mp4';
+          v.poster = 'v/' + name + '.jpg';
+          if (playing) v.play();
+        });
       });
     });
   });
